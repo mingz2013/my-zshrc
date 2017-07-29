@@ -7,7 +7,7 @@ export PATH=$HOME/bin:/usr/local/bin:/usr/local/sbin:$PATH
 # zsh ------begin--------------
 
 # Path to your oh-my-zsh installation.
-  export ZSH=/Users/zhaojm/.oh-my-zsh
+  export ZSH=~/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -132,24 +132,24 @@ export PATH=$PATH:/opt/metasploit-framework/bin
 
 
 # Add environment variable ANDROID_SDK_ROOT for cocos2d-x
-export ANDROID_SDK_ROOT=/Users/zhaojm/Library/Android/sdk
+export ANDROID_SDK_ROOT=~/Library/Android/sdk
 export PATH=$ANDROID_SDK_ROOT:$PATH
 export PATH=$ANDROID_SDK_ROOT/tools:$ANDROID_SDK_ROOT/platform-tools:$PATH
 
 # Add environment variable NDK_ROOT for cocos2d-x
-export NDK_ROOT=/Users/zhaojm/Library/Android/sdk/ndk-bundle
+export NDK_ROOT=~/Library/Android/sdk/ndk-bundle
 export PATH=$NDK_ROOT:$PATH
 
 # Add environment variable COCOS_CONSOLE_ROOT for cocos2d-x
-export COCOS_CONSOLE_ROOT=/Users/zhaojm/ides/cocos2d-x-3.15/tools/cocos2d-console/bin
+export COCOS_CONSOLE_ROOT=~/ides/cocos2d-x-3.15/tools/cocos2d-console/bin
 export PATH=$COCOS_CONSOLE_ROOT:$PATH
 
 # Add environment variable COCOS_X_ROOT for cocos2d-x
-export COCOS_X_ROOT=/Users/zhaojm/ides
+export COCOS_X_ROOT=~/ides
 export PATH=$COCOS_X_ROOT:$PATH
 
 # Add environment variable COCOS_TEMPLATES_ROOT for cocos2d-x
-export COCOS_TEMPLATES_ROOT=/Users/zhaojm/ides/cocos2d-x-3.15/templates
+export COCOS_TEMPLATES_ROOT=~/ides/cocos2d-x-3.15/templates
 export PATH=$COCOS_TEMPLATES_ROOT:$PATH
 
 # Add environment variable ANT_ROOT for cocos2d-x
@@ -160,7 +160,7 @@ export PATH="/usr/local/opt/openssl/bin:$PATH"
 
 
 # golang
-export GOPATH=/Users/zhaojm/go
+export GOPATH=~/go
 export PATH=$PATH:$GOPATH/bin
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
