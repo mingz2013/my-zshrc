@@ -56,7 +56,7 @@ ZSH_THEME="random"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(brew cp docker emacs git go nmap osx pip postgres python ruby rust sublime sudo svn vim-interaction thefuck)
+plugins=(adb brew cp docker docker-compose kubectl emacs git github gitignore globalias go golang history man nmap node npm osx pip postgres python ruby rust sublime sudo svn svn-fast-info thefuck themes vim-interaction)
 
 fpath=(/usr/local/share/zsh-completions $fpath)
 
@@ -141,7 +141,7 @@ export NDK_ROOT=~/Library/Android/sdk/ndk-bundle
 export PATH=$NDK_ROOT:$PATH
 
 # Add environment variable COCOS_CONSOLE_ROOT for cocos2d-x
-export COCOS_CONSOLE_ROOT=~/ides/cocos2d-x-3.15/tools/cocos2d-console/bin
+export COCOS_CONSOLE_ROOT=~/ides/cocos2d-x-3.17/tools/cocos2d-console/bin
 export PATH=$COCOS_CONSOLE_ROOT:$PATH
 
 # Add environment variable COCOS_X_ROOT for cocos2d-x
@@ -149,7 +149,7 @@ export COCOS_X_ROOT=~/ides
 export PATH=$COCOS_X_ROOT:$PATH
 
 # Add environment variable COCOS_TEMPLATES_ROOT for cocos2d-x
-export COCOS_TEMPLATES_ROOT=~/ides/cocos2d-x-3.15/templates
+export COCOS_TEMPLATES_ROOT=~/ides/cocos2d-x-3.17/templates
 export PATH=$COCOS_TEMPLATES_ROOT:$PATH
 
 # Add environment variable ANT_ROOT for cocos2d-x
@@ -162,6 +162,23 @@ export PATH="/usr/local/opt/openssl/bin:$PATH"
 # golang
 export GOPATH=~/go
 export PATH=$PATH:$GOPATH/bin
+# export GOROOT_FINAL=/usr/local/Cellar/go/1.10.3/libexec
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
+
+
+
+# Add Home Bin 
+export HOME_BIN=~/bin
+export PATH=$HOME_BIN:$PATH
+
+# llvm
+export LLVM_PATH="/usr/local/opt/llvm"
+
+# export LLVM_PATH="/Users/zhaojm/Library/Developer/Toolchains/Hikari.xctoolchain/usr"
+
+export PATH="$PATH:$LLVM_PATH/bin"
+export LDFLAGS="-L$LLVM_PATH/lib"
+export CPPFLAGS="-I$LLVM_PATH/include"
+
