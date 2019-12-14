@@ -1,7 +1,11 @@
 # If you come from bash you might have to change your $PATH.
+#echo $PATH
 export PATH=$PATH:/opt/local/bin
+
 # 使得homwbrew的包在system packages 之前加载, 比如python
-export PATH=$HOME/bin:/usr/local/bin:/usr/local/sbin:$PATH
+export PATH=/usr/local/bin:/usr/local/sbin:$PATH
+
+export PATH=$HOME/bin:$PATH
 
 
 # zsh ------begin--------------
@@ -110,10 +114,10 @@ alias vi='vim'
 alias grep='grep --color'
 alias egrep='egrep --color'
 alias fgrep='fgrep --color'  
-
+alias netcat='nc'
 
 # java
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/Home
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-11.0.2.jdk/Contents/Home/
 export PATH=$JAVA_HOME:$PATH
 
 # mysql
@@ -124,9 +128,11 @@ export PATH=$PATH:$MYSQL_BIN
 export RBENV_ROOT=/usr/local/var/rbenv
 eval "$(rbenv init -)"
 
+export GEM_HOME=$HOME/.gem
+export PATH=$GEM_HOME/bin:$PATH
 
 # msf
-PATH=$PATH:/opt/metasploit-framework/bin
+#PATH=$PATH:/opt/metasploit-framework/bin
 export PATH=$PATH:/opt/metasploit-framework/bin
 
 
@@ -134,7 +140,7 @@ export PATH=$PATH:/opt/metasploit-framework/bin
 # Add environment variable ANDROID_SDK_ROOT for cocos2d-x
 export ANDROID_SDK_ROOT=~/Library/Android/sdk
 export PATH=$ANDROID_SDK_ROOT:$PATH
-export PATH=$ANDROID_SDK_ROOT/tools:$ANDROID_SDK_ROOT/platform-tools:$PATH
+export PATH=$ANDROID_SDK_ROOT/tools:$ANDROID_SDK_ROOT/platform-tools:$ANDROID_SDK_ROOT/build-tools/28.0.1:$PATH
 
 # Add environment variable NDK_ROOT for cocos2d-x
 export NDK_ROOT=~/Library/Android/sdk/ndk-bundle
@@ -153,7 +159,7 @@ export COCOS_TEMPLATES_ROOT=~/ides/cocos2d-x-3.17/templates
 export PATH=$COCOS_TEMPLATES_ROOT:$PATH
 
 # Add environment variable ANT_ROOT for cocos2d-x
-export ANT_ROOT=/usr/local/Cellar/ant/1.9.8/bin
+export ANT_ROOT=/usr/local/Cellar/ant/1.10.5/bin
 export PATH=$ANT_ROOT:$PATH
 
 export PATH="/usr/local/opt/openssl/bin:$PATH"
@@ -168,11 +174,6 @@ export PATH=$PATH:$GOPATH/bin
 export PATH="$PATH:$HOME/.rvm/bin"
 
 
-
-# Add Home Bin 
-export HOME_BIN=~/bin
-export PATH=$HOME_BIN:$PATH
-
 # llvm
 export LLVM_PATH="/usr/local/opt/llvm"
 
@@ -181,4 +182,23 @@ export LLVM_PATH="/usr/local/opt/llvm"
 export PATH="$PATH:$LLVM_PATH/bin"
 export LDFLAGS="-L$LLVM_PATH/lib"
 export CPPFLAGS="-I$LLVM_PATH/include"
+
+
+# Add environment variable SDKBOX_HOME for sdkbox installer
+#export SDKBOX_HOME=/Users/zhaojm/.sdkbox
+#export PATH=${SDKBOX_HOME}/bin:$PATH
+
+
+
+
+
+
+# 去除重复环境变量
+#export PATH=$(echo $PATH | tr : "\n"| sort | uniq | tr "\n" :)
+export PATH=$(echo $PATH | tr ':' '\n' | perl -lne 'chomp; print unless $k{$_}; $k{$_}++' | tr '\n' ':' | sed 's/:$//') 
+
+
+
+
+
 
