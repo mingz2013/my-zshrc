@@ -1,11 +1,12 @@
-# If you come from bash you might have to change your $PATH.
+
+
+
 #echo $PATH
+
 export PATH=$PATH:/opt/local/bin
 
 # 使得homwbrew的包在system packages 之前加载, 比如python
 export PATH=/usr/local/bin:/usr/local/sbin:$PATH
-
-export PATH=$HOME/bin:$PATH
 
 
 # zsh ------begin--------------
@@ -60,21 +61,20 @@ ZSH_THEME="random"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(adb brew cp docker docker-compose kubectl emacs git github gitignore globalias go golang history man nmap node npm osx pip postgres python ruby rust sublime sudo svn svn-fast-info thefuck themes vim-interaction)
+plugins=(adb ant brew cp docker docker-compose kubectl emacs git github gitignore globalias go golang helm history keychain kubectl man nmap node npm osx pip postgres python redis-cli rsync ruby rust sublime sudo supervisor  svn svn-fast-info thefuck themes timer vim-interaction vscode xcode yarn z)
 
 fpath=(/usr/local/share/zsh-completions $fpath)
 
 source $ZSH/oh-my-zsh.sh
-
+#echo "end zsh"
 #-------------zsh end---------------------
+
+
+
 
 # User configuration
 
-# export MANPATH="/usr/local/man:$MANPATH"
 
-# You may need to manually set your language environment
-export LANG=en_US.UTF-8
-export LC_ALL=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
@@ -82,6 +82,7 @@ export LC_ALL=en_US.UTF-8
 # else
 #   export EDITOR='mvim'
 # fi
+
 
 # config coreutils
 if brew list | grep coreutils > /dev/null ; then
@@ -92,11 +93,16 @@ if brew list | grep coreutils > /dev/null ; then
 fi  
 
 
+
+
+# You may need to manually set your language environment
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+
+
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
-# ssh
-# export SSH_KEY_PATH="~/.ssh/rsa_id"
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
@@ -104,9 +110,9 @@ fi
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
+
 #alias zshconfig="mate ~/.zshrc"
 #alias ohmyzsh="mate ~/.oh-my-zsh"
-            
 #alias ls='ls -G'  
 alias l.='ls -d .*'
 alias ll='ls -l'   
@@ -115,6 +121,26 @@ alias grep='grep --color'
 alias egrep='egrep --color'
 alias fgrep='fgrep --color'  
 alias netcat='nc'
+
+
+# If you come from bash you might have to change your $PATH.
+
+
+# python
+export PATH=/usr/local/opt/python/libexec/bin:$PATH
+
+# pypy
+export PATH=/usr/local/share/pypy:$PATH
+
+# home bin
+export PATH=$HOME/bin:$PATH
+
+# man path
+export MANPATH="/usr/local/man:$MANPATH"
+
+# ssh
+# export SSH_KEY_PATH="~/.ssh/rsa_id"
+
 
 # java
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-11.0.2.jdk/Contents/Home/
@@ -146,17 +172,7 @@ export PATH=$ANDROID_SDK_ROOT/tools:$ANDROID_SDK_ROOT/platform-tools:$ANDROID_SD
 export NDK_ROOT=~/Library/Android/sdk/ndk-bundle
 export PATH=$NDK_ROOT:$PATH
 
-# Add environment variable COCOS_CONSOLE_ROOT for cocos2d-x
-export COCOS_CONSOLE_ROOT=~/ides/cocos2d-x-3.17/tools/cocos2d-console/bin
-export PATH=$COCOS_CONSOLE_ROOT:$PATH
 
-# Add environment variable COCOS_X_ROOT for cocos2d-x
-export COCOS_X_ROOT=~/ides
-export PATH=$COCOS_X_ROOT:$PATH
-
-# Add environment variable COCOS_TEMPLATES_ROOT for cocos2d-x
-export COCOS_TEMPLATES_ROOT=~/ides/cocos2d-x-3.17/templates
-export PATH=$COCOS_TEMPLATES_ROOT:$PATH
 
 # Add environment variable ANT_ROOT for cocos2d-x
 export ANT_ROOT=/usr/local/Cellar/ant/1.10.5/bin
@@ -190,15 +206,29 @@ export CPPFLAGS="-I$LLVM_PATH/include"
 
 
 
-
-
-
 # 去除重复环境变量
 #export PATH=$(echo $PATH | tr : "\n"| sort | uniq | tr "\n" :)
 export PATH=$(echo $PATH | tr ':' '\n' | perl -lne 'chomp; print unless $k{$_}; $k{$_}++' | tr '\n' ':' | sed 's/:$//') 
 
 
+# 设置homebrew的源，二进制的源
+export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles
 
 
 
 
+# 命令行代理的设置，开启和关闭功能
+# 使用privoxy 代理 shadowsocks
+# brew services start privoxy
+function proxy_off(){
+    unset http_proxy
+    unset https_proxy
+    echo -e "已关闭代理"
+}
+
+function proxy_on() {
+    export no_proxy="localhost,127.0.0.1,localaddress,.localdomain.com"
+    export http_proxy="http://127.0.0.1:8118"
+    export https_proxy=$http_proxy
+    echo -e "已开启代理"
+}
